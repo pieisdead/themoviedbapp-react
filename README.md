@@ -1,3 +1,7 @@
+# theMovieDBApp
+
+A demo app using The Movie DB API. You must provide your own API key in the config.js file.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

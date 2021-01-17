@@ -1,38 +1,231 @@
-.App {
-  text-align: center;
+body, html {
+    padding: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+    width: auto;
+    padding: 10px 30px;
+    background: #131313;
+    margin: 0;
+    display: block;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header h1 {
+    color: #FFF;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+    vertical-align: middle;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header input {
+    margin: 0 0 0 40px;
+    background: #3F3F3F;
+    color: #999;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 5px;
+    vertical-align: middle;
+    width: 200px;
 }
-
-.App-link {
-  color: #61dafb;
+nav {
+    width: auto;
+    display: block;
+    background: #672ECF;
+    padding: 5px 30px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px 0 0;
+    color: #FFF;
+    cursor: pointer;
+}
+nav ul li:nth-of-type(1) {
+    margin-left: -20px;
+}
+nav ul li.active {
+    background: #ffffff;
+    border-radius: 6px;
+    color: #672ECF;
+    font-weight: 500;
+}
+.movies {
+    display: block;
+    position: relative;
+    padding: 20px 30px;
+    background: #E7E7E7;
+    height: 100%;
+}
+.movies > div {
+    width: 24.6%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+.movies > div > div {
+    margin: 0 20px 20px 0;
+    padding: 10px;
+    background: #FFF;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.movies > div:nth-child(4n) > div {
+    margin-right: 0px;
+}
+.movies img {
+    max-width: 100%;
+}
+.movies p {
+    font-size: 13px;
+}
+h2 {
+    font-size: 22px;
+    color: #672ECF;
+    font-weight: 600;
+    margin: 10px 0;
+    line-height: 1.2em;
+}
+.star {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #A60002;
+    width: 40px;
+    height: 34px;
+    color: #FFF;
+    text-align: center;
+    display: block;
+    z-index: 2;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 6px 0 0 0;
+    border-radius: 50%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+button {
+    padding: 5px 20px;
+    background: #672ECF;
+    color: #FFF;
+    border-radius: 6px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+.pagination {
+    list-style: none;
+    margin: 10px 0 10px 30px;
+    padding: 0;
+}
+.pagination li {
+    display: inline-block;
+    padding: 0 5px;
+    border-right: solid #CCC thin;
+}
+.pagination li:nth-last-of-type(1) {
+    border-right: none;
+}
+.pagination li:nth-of-type(1), .pagination li:nth-of-type(3) {
+    cursor: pointer;
+    color: #672ECF;
+}
+.modal-overlay {
+    width: 100%;
+    height: inherit;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 3;
+    padding-bottom: 40px;
+}
+.modal {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    display: block;
+    background: #FFF;
+    border-radius: 10px;
+    position: relative;
+    z-index: 4;
+    top: 50px;
+    padding: 25px;
+}
+.buttonWrapper {
+    width: auto;
+    display: inline-block;
+}
+.modal i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 3px;
+    background: #672ECF;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    line-height: 0.4em;
+}
+.modal div.tab > section {
+    display: inline-block;
+    vertical-align: top;
+}
+.modal div.tab > section:nth-of-type(1) {
+    width: 23%;
+}
+.modal div.tab > section:nth-of-type(2) {
+    width: 75%;
+}
+.modal .tabs-nav {
+    display: block;
+    max-width: 90%;
+    border-bottom: solid #666 2px;
+}
+.tabs-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tabs-nav ul li {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.tabs-nav ul li.active {
+    border-bottom: solid #666 4px;
+}
+.poster {
+    display: inline-block;
+    vertical-align: top;
+    width: 19%;
+    margin: 0 10px 10px 0;
+}
+.poster img {
+    max-width: 100%;
+}
+.credit {
+    background: #E9E9E9;
+    padding: 3px;
+    margin: 0 0 2px 0;
+}
+.credit img {
+    display: inline-block;
+    width: 50px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+.credit div {
+    display: inline-block;
+    width: 39%;
+    vertical-align: middle;
 }
