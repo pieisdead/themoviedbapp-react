@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
 
 import getRecommendations from '../api/getRecommendations';
 import getCast from '../api/getCast';
@@ -11,7 +10,6 @@ import Video from './Video';
 
 const Modal = (props) => {
     
-    const spring = useSpring({transform: 'scale(1)', from: {transform: 'scale(0)'}});
     const movieImage = "https://image.tmdb.org/t/p/w185" + props.movie.poster_path;
     
     const [tab, setTab] = React.useState('Details');
@@ -22,6 +20,7 @@ const Modal = (props) => {
     const pageHeight = document.body.offsetHeight;
     
      React.useEffect(() => {
+         setRecommendations([]);
        getRecommendations(props.movie.id).then((recommendations) => {
           setRecommendations(recommendations.splice(0, 5));
        })
@@ -55,23 +54,31 @@ const Modal = (props) => {
         setTab(e.target.innerHTML);
     }
     
+    
+    const imdbLink = 'https://www.imdb.com/title/' + props.movie.imdb_id;
+    
     if (props.show) {
+        
          return (
             <div className="modal-overlay" style={{height: pageHeight + 'px'}}>
-                <animated.div className="modal" style={spring}>
+                <div className="modal">
                     <i onClick={props.closeHandler}>×</i>
                     <Tabs clickHandler={handleTabsClick} current={tab} />
                     <h2>{props.movie.title}</h2>
                     <div className="tab" style={tab === 'Details' ? {display: 'block'} : {display: 'none'}}>
                         <section>
                             <img src={movieImage} alt={props.movie.title} />
+                            <span className="star">{props.movie.vote_average}</span>
                         </section>
                         <section>
-                            <p>{props.movie.overview}</p>
-                            <p>Released: {props.movie.release_date}<br />
-                                Original title: {props.movie.original_title}<br />
-                                Language: {props.movie.original_language}<br />
-                                Budget: {props.movie.budget}
+                            <p className="overview">{props.movie.overview}</p>
+                            <p><strong>Released:</strong> {props.movie.release_date}<br />
+                                <strong>Original title:</strong> {props.movie.original_title}<br />
+                                <strong>Tagline:</strong> {props.movie.tagline}<br />
+                                <strong>Language:</strong> {props.movie.original_language}<br />
+                                <strong>Budget:</strong> {props.movie.budget}<br />
+                                <strong>Votes:</strong> {props.movie.vote_count}<br />
+                                <strong>IMDB:</strong> <a href={imdbLink} target="_blank">{props.movie.imdb_id} <img src="./link.svg" width="14" alt="Link" /></a>
                             </p>
                         </section>
                         <h3>More movies like this</h3>
@@ -83,7 +90,7 @@ const Modal = (props) => {
                     <div className="tab" style={tab === 'Video' ? {display: 'block'} : {display: 'none'}}>
                         {vids}
                     </div>
-                </animated.div>
+                </div>
             </div>
         )
     } else {

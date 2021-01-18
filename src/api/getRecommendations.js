@@ -12,7 +12,7 @@ export default function getRecommendations(id) {
                 resolve(results);
             },
             error: (xhr, status, err) => {
-                console.log('Failed to fetch recommendations');
+                console.error('Failed to fetch recommendations');
             }
         });
     });
