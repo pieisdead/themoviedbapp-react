@@ -101,6 +101,11 @@ const App = () => {
         setPage(1);
     }
     
+    function openCloseMenu(e) {
+        e.target.classList.toggle('active');
+        document.getElementById('menu').classList.toggle('active');
+    }
+    
     const rows = movies.map((movie, i) => {
         return <Movie key={i} movie={movie} clickHandler={() => {handleMovieClick(movie.id)}} />;
     });
@@ -112,7 +117,8 @@ const App = () => {
             <input type="text" placeholder="Search" onChange={handleSearch} />
         </header>
         <nav>
-            <ul>
+            <div className="menuBtn" onClick={openCloseMenu}><img src="./menu.svg" width="30" alt="Menu" /></div>
+            <ul id="menu">
                 <li onClick={() => { handleNavClick('popular') }}
                     className={type === 'popular' ? 'active' : ''}>Popular Movies</li>
                 <li onClick={() => { handleNavClick('top_rated') }}

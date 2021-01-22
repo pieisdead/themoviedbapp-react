@@ -78,7 +78,7 @@ const Modal = (props) => {
                                 <strong>Language:</strong> {props.movie.original_language}<br />
                                 <strong>Budget:</strong> {props.movie.budget}<br />
                                 <strong>Votes:</strong> {props.movie.vote_count}<br />
-                                <strong>IMDB:</strong> <a href={imdbLink} target="_blank">{props.movie.imdb_id} <img src="./link.svg" width="14" alt="Link" /></a>
+                                <strong>IMDB:</strong> <a href={imdbLink} target="_blank" rel="noreferrer">{props.movie.imdb_id} <img src="./link.svg" width="14" alt="Link" /></a>
                             </p>
                         </section>
                         <h3>More movies like this</h3>

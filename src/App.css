@@ -63,6 +63,9 @@ nav select {
     color: #FFF;
     border-radius: 12px;
 }
+.menuBtn {
+    display: none;
+}
 .movies {
     display: block;
     position: relative;
@@ -287,4 +290,90 @@ strong {
     position: absolute;
     border-radius: 50%;
     will-change: left;
+}
+
+@media screen and (max-width: 1024px) {
+    .movies > div {
+        width: 33%;
+    }
+    .movies > div:nth-child(4n) > div {
+        margin-right: 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .movies > div {
+        width: 49%;
+    }
+    .modal div.tab > section:nth-of-type(1) {
+        width: 40%;
+    }
+    .modal div.tab > section:nth-of-type(2) {
+        width: 56%;
+    }
+}
+@media screen and (max-width: 720px) {
+    nav ul {
+        position: absolute;
+        top: 92px;
+        left: 0px;
+        background: #672ECF;
+        padding: 20px;
+        width: auto;
+        display: block;
+        z-index: 2;
+        border-bottom-right-radius: 10px;
+        transform: scale(0, 0);
+        transform-origin: 0 0;
+        transition: transform 0.4s ease-out;
+    }
+    nav ul.active {
+        transform: scale(1, 1);
+    }
+    nav ul li {
+        display: block;
+    }
+    nav select {
+        float: right;
+    }
+    nav .menuBtn {
+        display: inline-block;
+        z-index: 3;
+    }
+    nav .menuBtn .active {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    nav ul li:nth-of-type(1) {
+        margin-left: 0px;
+    }
+    
+}
+@media screen and (max-width: 425px) {
+    nav #menu {
+        top: 140px;
+    }
+    .movies > div {
+        width: 100%;
+    } 
+    .movies > div > div {
+        margin-right: 0px;
+    }
+    header input {
+        margin: 10px 0;
+    }
+    footer p {
+        display: block;
+    }
+    footer p:nth-of-type(2) {
+        float: none;
+    }
+    .modal div.tab > section:nth-of-type(1) { 
+        width: 100%;
+    }
+    .modal div.tab > section:nth-of-type(2) {
+        width: 100%;
+    }
+    .poster {
+        width: 46%;
+    }
+    
 }
