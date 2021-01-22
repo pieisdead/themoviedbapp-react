@@ -20,6 +20,7 @@ const App = () => {
     const [movieID, setMovieID] = React.useState('1');
     const [pages, setPages] = React.useState(1);
     const [genres, setGenres] = React.useState([]);
+    const [isLoading, setLoading] = React.useState(false);
     
     React.useEffect(() => {
         setMovies([]);
@@ -36,8 +37,10 @@ const App = () => {
     
     React.useEffect(() => {
         setMovie([]);
+        setLoading(true);
        getMovie(movieID).then((movie) => {
           setMovie(movie);
+           setLoading(false);
        })
     }, [movieID]);
     
@@ -49,6 +52,7 @@ const App = () => {
     
     function handleNavClick(type) {
         setType(type);
+        setPage(1);
     }
     
     function handleClick(e) {
@@ -124,7 +128,7 @@ const App = () => {
             {rows}
         </div>
         <Pagination page={page} clickHandler={handleClick} totalPages={pages} />
-        <Modal show={modal} movie={movie} closeHandler={closeModal} />
+        <Modal show={modal} movie={movie} closeHandler={closeModal} movieLoading={isLoading} />
         <footer>
             <p>All data from TheMovieDB</p>
             <p>An <a href="https://github.com/pieisdead/themoviedbapp-react">OpenSource</a> app by <a href="https://www.multisites.co.za">MultiSites</a></p>

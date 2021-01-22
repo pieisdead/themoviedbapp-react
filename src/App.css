@@ -273,3 +273,18 @@ strong {
     display: inline-block;
     margin: 0 10px 10px 0;
 }
+.spinner {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    position: relative;
+    padding: 50px;
+}
+.spinner span {
+    width: 20px;
+    height: 20px;
+    background: #672ECF;
+    position: absolute;
+    border-radius: 50%;
+    will-change: left;
+}

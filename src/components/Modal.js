@@ -7,6 +7,7 @@ import Tabs from './Tabs';
 import Recommendation from './Recommendation';
 import Credit from './Credit';
 import Video from './Video';
+import Spinner from './Spinner';
 
 const Modal = (props) => {
     
@@ -57,8 +58,7 @@ const Modal = (props) => {
     
     const imdbLink = 'https://www.imdb.com/title/' + props.movie.imdb_id;
     
-    if (props.show) {
-        
+    if (props.show && !props.movieLoading) {
          return (
             <div className="modal-overlay" style={{height: pageHeight + 'px'}}>
                 <div className="modal">
@@ -93,6 +93,14 @@ const Modal = (props) => {
                 </div>
             </div>
         )
+    } else if (props.show && props.movieLoading) {
+        return (
+            <div className="modal-overlay" style={{height: pageHeight + 'px'}}>
+                <div className="modal">
+                    <Spinner />
+                </div>
+            </div>
+        )
     } else {
         return (
             <div></div>
@@ -101,4 +109,4 @@ const Modal = (props) => {
    
 }
 
-export default Modal
+export default Modal;
