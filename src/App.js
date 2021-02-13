@@ -87,7 +87,6 @@ const App = () => {
     function handleMovieClick(id) {
         setMovieID(id);
         showModal(true);
-        window.scrollTo(0, 0);
         setPage(1);
     }
     

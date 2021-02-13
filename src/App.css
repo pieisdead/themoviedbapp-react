@@ -278,7 +278,7 @@ strong {
 }
 .spinner {
     display: block;
-    width: 100px;
+    width: 50px;
     margin: 20px auto;
     position: relative;
     padding: 50px;
@@ -289,7 +289,7 @@ strong {
     background: #672ECF;
     position: absolute;
     border-radius: 50%;
-    will-change: left;
+    transition: left 0.5s ease-out;
 }
 
 @media screen and (max-width: 1024px) {

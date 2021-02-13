@@ -19,7 +19,7 @@ const Modal = (props) => {
     const [videos, setVideos] = React.useState([]);
     
     const pageHeight = document.body.offsetHeight;
-    
+    const yPos = window.scrollY;
      React.useEffect(() => {
          setRecommendations([]);
        getRecommendations(props.movie.id).then((recommendations) => {
@@ -61,7 +61,7 @@ const Modal = (props) => {
     if (props.show && !props.movieLoading) {
          return (
             <div className="modal-overlay" style={{height: pageHeight + 'px'}}>
-                <div className="modal">
+                <div className="modal" style={{top: yPos + 'px'}}>
                     <i onClick={props.closeHandler}>×</i>
                     <Tabs clickHandler={handleTabsClick} current={tab} />
                     <h2>{props.movie.title}</h2>
@@ -96,7 +96,7 @@ const Modal = (props) => {
     } else if (props.show && props.movieLoading) {
         return (
             <div className="modal-overlay" style={{height: pageHeight + 'px'}}>
-                <div className="modal">
+                <div className="modal" style={{top: yPos + 'px'}}>
                     <Spinner />
                 </div>
             </div>
