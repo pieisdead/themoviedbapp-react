@@ -67,26 +67,33 @@ nav select {
     display: none;
 }
 .movies {
-    display: block;
+    display: grid;
     position: relative;
     padding: 20px 30px;
     background: #E7E7E7;
     height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    align-items: stretch;
+    gap: 20px;
 }
 .movies > div {
-    width: 24.6%;
-    display: inline-block;
+    width: auto;
+    display: flex;
     position: relative;
     vertical-align: top;
+    height: 100%;
+    background: #ccc;
 }
 .movies > div > div {
-    margin: 0 20px 20px 0;
     padding: 10px;
     background: #FFF;
     border-radius: 5px;
     text-align: center;
     position: relative;
     z-index: 1;
+    min-height: 200px;
+    
 }
 .movies > div:nth-child(4n) > div {
     margin-right: 0px;
@@ -110,16 +117,17 @@ h2 {
     right: 5px;
     background: #A60002;
     width: 40px;
-    height: 34px;
+    height: 40px;
     color: #FFF;
     text-align: center;
-    display: block;
+    display: flex;
     z-index: 2;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 6px 0 0 0;
+    font-size: 22px;
+    font-weight: 800;
     border-radius: 50%;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
 }
 button {
     padding: 5px 20px;
@@ -225,14 +233,31 @@ button {
 .tabs-nav ul li.active {
     border-bottom: solid #666 4px;
 }
+.movie-content {
+    display: flex;
+    flex-direction: rows;
+    gap: 20px;
+    position: relative;
+}
+.movie-content .star {
+    left: -10px;
+    top: -10px;
+}
+.recommends {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
 .poster {
-    display: inline-block;
+    display: flex;
     vertical-align: top;
-    width: 19%;
-    margin: 0 10px 10px 0;
+    object-fit: cover;
+}
+.poster .star {
+    position: absolute;
 }
 .poster img {
-    max-width: 100%;
+    min-width: 100%;
 }
 .credit {
     background: #E9E9E9;
@@ -291,6 +316,7 @@ strong {
     border-radius: 50%;
     transition: left 0.5s ease-out;
 }
+
 
 @media screen and (max-width: 1024px) {
     .movies > div {

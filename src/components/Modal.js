@@ -57,6 +57,7 @@ const Modal = (props) => {
     
     
     const imdbLink = 'https://www.imdb.com/title/' + props.movie.imdb_id;
+    const voteFloor = Math.floor(props.movie.vote_average);
     
     if (props.show && !props.movieLoading) {
          return (
@@ -66,23 +67,28 @@ const Modal = (props) => {
                     <Tabs clickHandler={handleTabsClick} current={tab} />
                     <h2>{props.movie.title}</h2>
                     <div className="tab" style={tab === 'Details' ? {display: 'block'} : {display: 'none'}}>
-                        <section>
+                        <div className="movie-content">
+                            <section>
                             <img src={movieImage} alt={props.movie.title} />
-                            <span className="star">{props.movie.vote_average}</span>
-                        </section>
-                        <section>
-                            <p className="overview">{props.movie.overview}</p>
-                            <p><strong>Released:</strong> {props.movie.release_date}<br />
-                                <strong>Original title:</strong> {props.movie.original_title}<br />
-                                <strong>Tagline:</strong> {props.movie.tagline}<br />
-                                <strong>Language:</strong> {props.movie.original_language}<br />
-                                <strong>Budget:</strong> {props.movie.budget}<br />
-                                <strong>Votes:</strong> {props.movie.vote_count}<br />
-                                <strong>IMDB:</strong> <a href={imdbLink} target="_blank" rel="noreferrer">{props.movie.imdb_id} <img src="./link.svg" width="14" alt="Link" /></a>
-                            </p>
-                        </section>
+                            <span className="star">{voteFloor}</span>
+                            </section>
+                            <section>
+                                <p className="overview">{props.movie.overview}</p>
+                                <p><strong>Released:</strong> {props.movie.release_date}<br />
+                                    <strong>Original title:</strong> {props.movie.original_title}<br />
+                                    <strong>Tagline:</strong> {props.movie.tagline}<br />
+                                    <strong>Language:</strong> {props.movie.original_language}<br />
+                                    <strong>Budget:</strong> {props.movie.budget}<br />
+                                    <strong>Votes:</strong> {props.movie.vote_count}<br />
+                                    <strong>IMDB:</strong> <a href={imdbLink} target="_blank" rel="noreferrer">{props.movie.imdb_id} <img src="./link.svg" width="14" alt="Link" /></a>
+                                </p>
+                            </section>
+                        </div>
+                        
                         <h3>More movies like this</h3>
-                        {recs}
+                        <div className="recommends">
+                            {recs}
+                        </div>
                     </div>
                     <div className="tab" style={tab === 'Cast' ? {display: 'block'} : {display: 'none'}}>
                         {credits}

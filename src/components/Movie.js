@@ -8,10 +8,11 @@ const Movie = (props) => {
     const pLength = 100;
     const overview = props.movie.overview.substr(0, pLength);
     const spring = useSpring({transform: 'scale(1)', from: {transform: 'scale(0)'}});
+    const voteFloor = Math.floor(props.movie.vote_average);
     return (
         <div onClick={props.clickHandler}>
             <animated.div style={spring}>
-                <span className="star">{props.movie.vote_average}</span>
+                <span className="star">{voteFloor}</span>
                 <img src={movieImage} alt={props.movie.title} />
                 <h2>{props.movie.title}</h2>
                 <p>Released: {props.movie.release_date}</p>
